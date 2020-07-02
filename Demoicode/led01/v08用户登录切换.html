@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span v-if="isUser">
+        <label for="username">用户账号登录</label>
+        <input type="text" id="username" placeholder="用户账号" key="username">  // key=指定input输入框是否清除；不添加keyvue底成会进行标签互用（不删除标签，性能好）
+    </span>
+    <span v-else>
+        <label for="email">用户邮箱</label>
+        <input type="text" id="email" placeholder="用户邮箱" key="email">   // key=指定input输入框是否清除
+    </span>
+    <button @click="isUser = !isUser">切换用户类型</button>
+
+
+    <!--v-if: 当条件为false时, 包含v-if指令的元素, 根本就不会存在dom中-->
+    <h3 v-if="isShow" id="aaa">{{message}}</h3>
+    <!--v-show: 当条件为false时, v-show只是给我们的元素添加一个行内样式: display: none-->
+    <h3 v-show="isShow" id="bbb">{{message}}</h3>
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"hello",
+            isUser:false,
+            isShow:true
+        }
+    })
+</script>
+</body>
+</html>

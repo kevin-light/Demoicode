@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div id="app" v-if="isShow">-->
+<!--    <div>abc</div>-->
+<!--    <div>abc</div>-->
+<!--    <div>abc</div>-->
+<!--    {{message}}-->
+<!--</div>     //  if判断-->
+
+<div id="app">
+    <h3 v-if="isShow">
+    <div>abc</div>
+    <div>abc</div>
+    <div>abc</div>
+    {{message}}
+    </h3>
+    <h2 v-else-if="score>80">false-if</h2>
+    <h2 v-else>false</h2>
+
+<!--    复杂的判断逻辑用 computed-->
+    <h1>{{result}}</h1>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"hello",
+            isShow:false
+        },
+        computed: {
+            result(){
+                let showMessage="";
+                if (this.score>=90){
+                    showMessage="优秀"
+                }else if(this.score>=80){
+                    showMessage="良好"
+                }
+                else {
+                    showMessage="一般"
+                }
+                return showMessage
+            }
+        }
+    })
+</script>
+</body>
+</html>
